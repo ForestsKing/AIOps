@@ -25,6 +25,7 @@ if __name__ == '__main__':
     # exp.fit(train)
     # exp.detection(test, label)
 
+
     # matric
     train = pd.read_csv('dataset/processed/train/metrics/metrics_clean.csv')
     test = pd.read_csv('dataset/processed/test/metrics/metrics_clean.csv')
@@ -34,7 +35,7 @@ if __name__ == '__main__':
     feature = feature[feature['use'] == 1]['metric'].values.tolist()
 
     exp = MetricExp(feature)
-    exp.fit(train)
+    # exp.fit(train)
     exp.update_threshold(test.iloc[:180], label['label'].values[:180])
     exp.detection(test.iloc[180:], label['label'].values[180:])
 
@@ -54,7 +55,7 @@ if __name__ == '__main__':
                'user -> user']
 
     exp = TraceExp(feature)
-    exp.fit(train)
+    # exp.fit(train)
     exp.update_threshold(test.iloc[:180], label['label'].values[:180])
     exp.detection(test.iloc[180:], label['label'].values[180:])
 
@@ -83,6 +84,6 @@ if __name__ == '__main__':
                     'user -> user'])
 
     exp = MetricTraceExp(feature)
-    exp.fit(train)
+    # exp.fit(train)
     exp.update_threshold(test.iloc[:180], label['label'].values[:180])
     exp.detection(test.iloc[180:], label['label'].values[180:])

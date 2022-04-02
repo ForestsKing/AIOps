@@ -19,7 +19,7 @@ from utils.evalmethods import best_threshold
 
 
 class MetricExp:
-    def __init__(self, feature, epochs=100, batch_size=16, patience=7, lr=0.001, w=30, gamma=0.5, r=0.5, verbose=True):
+    def __init__(self, feature, epochs=100, batch_size=16, patience=7, lr=0.001, w=30, gamma=0.1, r=0.5, verbose=True):
         self.feature = feature
         self.epochs = epochs
         self.batch_size = batch_size
