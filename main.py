@@ -3,29 +3,19 @@ import warnings
 import pandas as pd
 
 from exp.log import LogExp
+from exp.metric import MetricExp
+from exp.metric_trace import MetricTraceExp
+from exp.metric_trace_log import MetricTraceLogExp
+from exp.trace import TraceExp
 from utils.setseed import set_seed
 
 warnings.filterwarnings("ignore")
 
 if __name__ == '__main__':
     set_seed(42)
-    # root cause
-    # exp = RootCauseExp(input_path='./dataset/processed/root_cause/')
-    # exp.location()
-    # exp.evaluation()
 
-    # log
-    train = pd.read_csv('./dataset/processed/train/logs/logs.csv')
-    test = pd.read_csv('./dataset/processed/test/logs/logs.csv')
-    label = pd.read_csv('./dataset/processed/test/label.csv')
-    nEvent = len(pd.read_csv('./dataset/processed/tmp/log.log_templates.csv'))
-    exp = LogExp(nEvent)
-    exp.fit(train)
-    exp.update_threshold(test[test['timestamp'] < label['timestamp'].values[180]], label.iloc[:180])
-    exp.detection(test[test['timestamp'] >= label['timestamp'].values[180]], label.iloc[180:])
-
-'''
-    # matric
+    # metric
+    print('====================Metric====================')
     train = pd.read_csv('dataset/processed/train/metrics/metrics_clean.csv')
     test = pd.read_csv('dataset/processed/test/metrics/metrics_clean.csv')
     label = pd.read_csv('dataset/processed/test/label.csv')
@@ -37,8 +27,10 @@ if __name__ == '__main__':
     exp.fit(train)
     exp.update_threshold(test.iloc[:180], label.iloc[:180])
     exp.detection(test.iloc[180:], label.iloc[180:])
+    print('====================End====================', '\n\n\n\n\n')
 
     # trace
+    print('====================Trace====================')
     train = pd.read_csv('dataset/processed/train/traces/traces_clean.csv')
     test = pd.read_csv('dataset/processed/test/traces/traces_clean.csv')
     label = pd.read_csv('dataset/processed/test/label.csv')
@@ -57,8 +49,22 @@ if __name__ == '__main__':
     exp.fit(train)
     exp.update_threshold(test.iloc[:180], label.iloc[:180])
     exp.detection(test.iloc[180:], label.iloc[180:])
+    print('====================End====================', '\n\n\n\n\n')
 
-    # matric & trace
+    # log
+    print('====================Log====================')
+    train = pd.read_csv('./dataset/processed/train/logs/logs.csv')
+    test = pd.read_csv('./dataset/processed/test/logs/logs.csv')
+    label = pd.read_csv('./dataset/processed/test/label.csv')
+    nEvent = len(pd.read_csv('./dataset/processed/tmp/log.log_templates.csv'))
+    exp = LogExp(nEvent)
+    exp.fit(train)
+    exp.update_threshold(test[test['timestamp'] < label['timestamp'].values[180]], label.iloc[:180])
+    exp.detection(test[test['timestamp'] >= label['timestamp'].values[180]], label.iloc[180:])
+    print('====================End====================', '\n\n\n\n\n')
+
+    # metric & trace
+    print('====================Metric & Trace====================')
     train_metric = pd.read_csv('dataset/processed/train/metrics/metrics_clean.csv')
     test_metric = pd.read_csv('dataset/processed/test/metrics/metrics_clean.csv')
     train_trace = pd.read_csv('dataset/processed/train/traces/traces_clean.csv')
@@ -86,4 +92,18 @@ if __name__ == '__main__':
     exp.fit(train)
     exp.update_threshold(test.iloc[:180], label.iloc[:180])
     exp.detection(test.iloc[180:], label.iloc[180:])
-'''
+    print('====================End====================', '\n\n\n\n\n')
+
+    # metric trace log
+    print('====================Metric & Trace & Log====================')
+    exp = MetricTraceLogExp()
+    exp.update_threshold()
+    exp.detection()
+    print('====================End====================', '\n\n\n\n\n')
+
+    # root cause
+    print('====================Root Cause====================')
+    # exp = RootCauseExp(input_path='./dataset/processed/root_cause/')
+    # exp.location()
+    # exp.evaluation()
+    print('====================End====================', '\n\n\n\n\n')

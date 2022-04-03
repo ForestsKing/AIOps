@@ -1,245 +1,265 @@
-| 训练集开始时间有突变               |      |      |      |
-| ---------------------------------- | ---- | ---- | ---- |
-| 测试集均值比训练集大               |      |      |      |
-| 时间太短，部分指标的周期性无法体现 |      |      |      |
-| 有的异常会引起一段时间的阶越变化   |      |      |      |
-
-
-
 ssh://wcs@10.112.79.143:22/home/wcs/miniconda3/envs/py39/bin/python -u /home/wcs/demo/AIOps/main.py
-100%|██████████████████████████████████████████| 62/62 [00:00<00:00, 174.63it/s]
+====================Metric====================
+100%|███████████████████████████████████████████| 62/62 [00:01<00:00, 61.14it/s]
 Init || Total Loss| Train: 1.001636 Vali: 1.018296 || Forecast Loss| Train:1.005413 Valid: 1.023013 || Reconstruct Loss| Train: 0.998445 Valid: 1.013959
-100%|███████████████████████████████████████████| 62/62 [00:01<00:00, 58.01it/s]
+100%|███████████████████████████████████████████| 62/62 [00:02<00:00, 26.77it/s]
 Epoch: 1 || Total Loss| Train: 0.884319 Vali: 0.930441 || Forecast Loss| Train:0.854478 Valid: 0.860052 || Reconstruct Loss| Train: 0.914959 Valid: 1.001419
 Validation loss decreased (inf --> 0.930441).  Saving model ...
-100%|███████████████████████████████████████████| 62/62 [00:01<00:00, 58.28it/s]
+100%|███████████████████████████████████████████| 62/62 [00:02<00:00, 26.67it/s]
 Epoch: 2 || Total Loss| Train: 0.814599 Vali: 0.896837 || Forecast Loss| Train:0.782634 Valid: 0.805721 || Reconstruct Loss| Train: 0.847350 Valid: 0.988277
 Validation loss decreased (0.930441 --> 0.896837).  Saving model ...
-100%|███████████████████████████████████████████| 62/62 [00:01<00:00, 58.37it/s]
+100%|███████████████████████████████████████████| 62/62 [00:02<00:00, 27.05it/s]
 Epoch: 3 || Total Loss| Train: 0.791788 Vali: 0.856239 || Forecast Loss| Train:0.753901 Valid: 0.784939 || Reconstruct Loss| Train: 0.830725 Valid: 0.928104
 Validation loss decreased (0.896837 --> 0.856239).  Saving model ...
-100%|███████████████████████████████████████████| 62/62 [00:01<00:00, 58.55it/s]
+100%|███████████████████████████████████████████| 62/62 [00:02<00:00, 27.08it/s]
 Epoch: 4 || Total Loss| Train: 0.775411 Vali: 0.859375 || Forecast Loss| Train:0.737668 Valid: 0.775639 || Reconstruct Loss| Train: 0.814038 Valid: 0.944084
 EarlyStopping counter: 1 out of 7
-100%|███████████████████████████████████████████| 62/62 [00:01<00:00, 58.58it/s]
+100%|███████████████████████████████████████████| 62/62 [00:02<00:00, 27.10it/s]
 Epoch: 5 || Total Loss| Train: 0.763884 Vali: 0.856650 || Forecast Loss| Train:0.723269 Valid: 0.769899 || Reconstruct Loss| Train: 0.805296 Valid: 0.944037
 EarlyStopping counter: 2 out of 7
-100%|███████████████████████████████████████████| 62/62 [00:01<00:00, 58.60it/s]
+100%|███████████████████████████████████████████| 62/62 [00:02<00:00, 27.10it/s]
 Epoch: 6 || Total Loss| Train: 0.754427 Vali: 0.857584 || Forecast Loss| Train:0.710599 Valid: 0.759256 || Reconstruct Loss| Train: 0.798692 Valid: 0.956759
 EarlyStopping counter: 3 out of 7
-100%|███████████████████████████████████████████| 62/62 [00:01<00:00, 58.63it/s]
+100%|███████████████████████████████████████████| 62/62 [00:02<00:00, 27.16it/s]
 Epoch: 7 || Total Loss| Train: 0.746187 Vali: 0.850831 || Forecast Loss| Train:0.698631 Valid: 0.756741 || Reconstruct Loss| Train: 0.794803 Valid: 0.945548
 Validation loss decreased (0.856239 --> 0.850831).  Saving model ...
-100%|███████████████████████████████████████████| 62/62 [00:01<00:00, 58.61it/s]
+100%|███████████████████████████████████████████| 62/62 [00:02<00:00, 27.16it/s]
 Epoch: 8 || Total Loss| Train: 0.741405 Vali: 0.852219 || Forecast Loss| Train:0.692437 Valid: 0.760845 || Reconstruct Loss| Train: 0.791119 Valid: 0.944237
 EarlyStopping counter: 1 out of 7
-100%|███████████████████████████████████████████| 62/62 [00:01<00:00, 58.59it/s]
+100%|███████████████████████████████████████████| 62/62 [00:02<00:00, 27.18it/s]
 Epoch: 9 || Total Loss| Train: 0.734381 Vali: 0.845009 || Forecast Loss| Train:0.684662 Valid: 0.755587 || Reconstruct Loss| Train: 0.784850 Valid: 0.934849
 Validation loss decreased (0.850831 --> 0.845009).  Saving model ...
-100%|███████████████████████████████████████████| 62/62 [00:01<00:00, 58.32it/s]
+100%|███████████████████████████████████████████| 62/62 [00:02<00:00, 27.20it/s]
 Epoch: 10 || Total Loss| Train: 0.732254 Vali: 0.851391 || Forecast Loss| Train:0.681354 Valid: 0.755392 || Reconstruct Loss| Train: 0.783711 Valid: 0.947827
 EarlyStopping counter: 1 out of 7
-100%|███████████████████████████████████████████| 62/62 [00:01<00:00, 58.34it/s]
+100%|███████████████████████████████████████████| 62/62 [00:02<00:00, 26.80it/s]
 Epoch: 11 || Total Loss| Train: 0.729849 Vali: 0.847246 || Forecast Loss| Train:0.678240 Valid: 0.751116 || Reconstruct Loss| Train: 0.782411 Valid: 0.943996
 EarlyStopping counter: 2 out of 7
-100%|███████████████████████████████████████████| 62/62 [00:01<00:00, 58.42it/s]
+100%|███████████████████████████████████████████| 62/62 [00:02<00:00, 27.05it/s]
 Epoch: 12 || Total Loss| Train: 0.724756 Vali: 0.847755 || Forecast Loss| Train:0.672004 Valid: 0.749751 || Reconstruct Loss| Train: 0.778329 Valid: 0.946488
 EarlyStopping counter: 3 out of 7
-100%|███████████████████████████████████████████| 62/62 [00:01<00:00, 58.29it/s]
+100%|███████████████████████████████████████████| 62/62 [00:02<00:00, 27.05it/s]
 Epoch: 13 || Total Loss| Train: 0.721406 Vali: 0.846654 || Forecast Loss| Train:0.667146 Valid: 0.751295 || Reconstruct Loss| Train: 0.776727 Valid: 0.942606
 EarlyStopping counter: 4 out of 7
-100%|███████████████████████████████████████████| 62/62 [00:01<00:00, 58.39it/s]
+100%|███████████████████████████████████████████| 62/62 [00:02<00:00, 27.05it/s]
 Epoch: 14 || Total Loss| Train: 0.717762 Vali: 0.851300 || Forecast Loss| Train:0.663263 Valid: 0.756579 || Reconstruct Loss| Train: 0.773123 Valid: 0.946956
 EarlyStopping counter: 5 out of 7
-100%|███████████████████████████████████████████| 62/62 [00:01<00:00, 58.76it/s]
+100%|███████████████████████████████████████████| 62/62 [00:02<00:00, 27.08it/s]
 Epoch: 15 || Total Loss| Train: 0.717756 Vali: 0.850685 || Forecast Loss| Train:0.664130 Valid: 0.751941 || Reconstruct Loss| Train: 0.772077 Valid: 0.949974
 EarlyStopping counter: 6 out of 7
-100%|███████████████████████████████████████████| 62/62 [00:01<00:00, 58.53it/s]
+100%|███████████████████████████████████████████| 62/62 [00:02<00:00, 27.05it/s]
 Epoch: 16 || Total Loss| Train: 0.717191 Vali: 0.851740 || Forecast Loss| Train:0.659909 Valid: 0.754338 || Reconstruct Loss| Train: 0.775251 Valid: 0.949546
 EarlyStopping counter: 7 out of 7
-100%|███████████████████████████████████████████| 10/10 [00:00<00:00, 97.22it/s]
-Threshold is 1.670098
-Valid || precision: 0.727273 recall: 0.800000 f1: 0.761905
-100%|███████████████████████████████████████████| 32/32 [00:00<00:00, 96.23it/s]
-Test || precision: 0.868421 recall: 0.776471 f1: 0.819876
-100%|██████████████████████████████████████████| 62/62 [00:00<00:00, 195.55it/s]
-Init || Total Loss| Train: 0.967512 Vali: 1.069971 || Forecast Loss| Train:0.967781 Valid: 1.065497 || Reconstruct Loss| Train: 0.969917 Valid: 1.076482
-100%|███████████████████████████████████████████| 62/62 [00:01<00:00, 59.17it/s]
-Epoch: 1 || Total Loss| Train: 0.959530 Vali: 1.080927 || Forecast Loss| Train:0.957440 Valid: 1.077266 || Reconstruct Loss| Train: 0.965473 Valid: 1.086679
-Validation loss decreased (inf --> 1.080927).  Saving model ...
-100%|███████████████████████████████████████████| 62/62 [00:01<00:00, 59.43it/s]
-Epoch: 2 || Total Loss| Train: 0.951670 Vali: 1.062561 || Forecast Loss| Train:0.955685 Valid: 1.064047 || Reconstruct Loss| Train: 0.949941 Valid: 1.062585
-Validation loss decreased (1.080927 --> 1.062561).  Saving model ...
-100%|███████████████████████████████████████████| 62/62 [00:01<00:00, 59.53it/s]
-Epoch: 3 || Total Loss| Train: 0.941675 Vali: 1.057874 || Forecast Loss| Train:0.944103 Valid: 1.057821 || Reconstruct Loss| Train: 0.942049 Valid: 1.060374
-Validation loss decreased (1.062561 --> 1.057874).  Saving model ...
-100%|███████████████████████████████████████████| 62/62 [00:01<00:00, 58.95it/s]
-Epoch: 4 || Total Loss| Train: 0.943211 Vali: 1.051909 || Forecast Loss| Train:0.956458 Valid: 1.049239 || Reconstruct Loss| Train: 0.935295 Valid: 1.056084
-Validation loss decreased (1.057874 --> 1.051909).  Saving model ...
-100%|███████████████████████████████████████████| 62/62 [00:01<00:00, 58.83it/s]
-Epoch: 5 || Total Loss| Train: 0.936330 Vali: 1.052177 || Forecast Loss| Train:0.941223 Valid: 1.051412 || Reconstruct Loss| Train: 0.933155 Valid: 1.054167
-EarlyStopping counter: 1 out of 7
-100%|███████████████████████████████████████████| 62/62 [00:01<00:00, 58.87it/s]
-Epoch: 6 || Total Loss| Train: 0.937444 Vali: 1.043146 || Forecast Loss| Train:0.942818 Valid: 1.042642 || Reconstruct Loss| Train: 0.934506 Valid: 1.048044
-Validation loss decreased (1.051909 --> 1.043146).  Saving model ...
-100%|███████████████████████████████████████████| 62/62 [00:01<00:00, 58.90it/s]
-Epoch: 7 || Total Loss| Train: 0.933113 Vali: 1.044992 || Forecast Loss| Train:0.937878 Valid: 1.044875 || Reconstruct Loss| Train: 0.930556 Valid: 1.048250
-EarlyStopping counter: 1 out of 7
-100%|███████████████████████████████████████████| 62/62 [00:01<00:00, 58.96it/s]
-Epoch: 8 || Total Loss| Train: 0.932075 Vali: 1.056297 || Forecast Loss| Train:0.936631 Valid: 1.072344 || Reconstruct Loss| Train: 0.929616 Valid: 1.045474
-EarlyStopping counter: 2 out of 7
-100%|███████████████████████████████████████████| 62/62 [00:01<00:00, 59.38it/s]
-Epoch: 9 || Total Loss| Train: 0.929041 Vali: 1.055973 || Forecast Loss| Train:0.934695 Valid: 1.068007 || Reconstruct Loss| Train: 0.925951 Valid: 1.047607
-EarlyStopping counter: 3 out of 7
-100%|███████████████████████████████████████████| 62/62 [00:01<00:00, 59.23it/s]
-Epoch: 10 || Total Loss| Train: 0.927220 Vali: 1.052362 || Forecast Loss| Train:0.931318 Valid: 1.059368 || Reconstruct Loss| Train: 0.926309 Valid: 1.046736
-EarlyStopping counter: 4 out of 7
-100%|███████████████████████████████████████████| 62/62 [00:01<00:00, 58.93it/s]
-Epoch: 11 || Total Loss| Train: 0.928510 Vali: 1.042050 || Forecast Loss| Train:0.933170 Valid: 1.042856 || Reconstruct Loss| Train: 0.926383 Valid: 1.044873
-Validation loss decreased (1.043146 --> 1.042050).  Saving model ...
-100%|███████████████████████████████████████████| 62/62 [00:01<00:00, 58.80it/s]
-Epoch: 12 || Total Loss| Train: 0.924148 Vali: 1.052971 || Forecast Loss| Train:0.930421 Valid: 1.061522 || Reconstruct Loss| Train: 0.921030 Valid: 1.046991
-EarlyStopping counter: 1 out of 7
-100%|███████████████████████████████████████████| 62/62 [00:01<00:00, 58.86it/s]
-Epoch: 13 || Total Loss| Train: 0.928170 Vali: 1.047302 || Forecast Loss| Train:0.933645 Valid: 1.048814 || Reconstruct Loss| Train: 0.925340 Valid: 1.047833
-EarlyStopping counter: 2 out of 7
-100%|███████████████████████████████████████████| 62/62 [00:01<00:00, 58.71it/s]
-Epoch: 14 || Total Loss| Train: 0.926019 Vali: 1.048120 || Forecast Loss| Train:0.931530 Valid: 1.053854 || Reconstruct Loss| Train: 0.922446 Valid: 1.044417
-EarlyStopping counter: 3 out of 7
-100%|███████████████████████████████████████████| 62/62 [00:01<00:00, 59.32it/s]
-Epoch: 15 || Total Loss| Train: 0.920369 Vali: 1.052642 || Forecast Loss| Train:0.925973 Valid: 1.060545 || Reconstruct Loss| Train: 0.917969 Valid: 1.046787
-EarlyStopping counter: 4 out of 7
-100%|███████████████████████████████████████████| 62/62 [00:01<00:00, 41.80it/s]
-Epoch: 16 || Total Loss| Train: 0.921947 Vali: 1.047028 || Forecast Loss| Train:0.926755 Valid: 1.051771 || Reconstruct Loss| Train: 0.920523 Valid: 1.045653
-EarlyStopping counter: 5 out of 7
-100%|███████████████████████████████████████████| 62/62 [00:03<00:00, 18.93it/s]
-Epoch: 17 || Total Loss| Train: 0.925680 Vali: 1.051084 || Forecast Loss| Train:0.935628 Valid: 1.059969 || Reconstruct Loss| Train: 0.919097 Valid: 1.043717
-EarlyStopping counter: 6 out of 7
-100%|███████████████████████████████████████████| 62/62 [00:03<00:00, 18.96it/s]
-Epoch: 18 || Total Loss| Train: 0.925755 Vali: 1.053447 || Forecast Loss| Train:0.938210 Valid: 1.068052 || Reconstruct Loss| Train: 0.916750 Valid: 1.041080
-EarlyStopping counter: 7 out of 7
-100%|███████████████████████████████████████████| 10/10 [00:00<00:00, 32.46it/s]
-Threshold is 0.250100
-Valid || precision: 0.256410 recall: 1.000000 f1: 0.408163
-100%|███████████████████████████████████████████| 32/32 [00:01<00:00, 31.92it/s]
-Test || precision: 0.174538 recall: 1.000000 f1: 0.297203
-100%|███████████████████████████████████████████| 62/62 [00:01<00:00, 61.66it/s]
-Init || Total Loss| Train: 0.998664 Vali: 1.023156 || Forecast Loss| Train:1.001311 Valid: 1.026748 || Reconstruct Loss| Train: 0.996437 Valid: 1.019828
-100%|███████████████████████████████████████████| 62/62 [00:03<00:00, 18.58it/s]
-Epoch: 1 || Total Loss| Train: 0.908518 Vali: 0.939639 || Forecast Loss| Train:0.883045 Valid: 0.894894 || Reconstruct Loss| Train: 0.934539 Valid: 0.985036
-Validation loss decreased (inf --> 0.939639).  Saving model ...
-100%|███████████████████████████████████████████| 62/62 [00:03<00:00, 18.61it/s]
-Epoch: 2 || Total Loss| Train: 0.847023 Vali: 0.951917 || Forecast Loss| Train:0.818414 Valid: 0.876935 || Reconstruct Loss| Train: 0.876633 Valid: 1.027733
-EarlyStopping counter: 1 out of 7
-100%|███████████████████████████████████████████| 62/62 [00:03<00:00, 18.62it/s]
-Epoch: 3 || Total Loss| Train: 0.828943 Vali: 0.927076 || Forecast Loss| Train:0.799905 Valid: 0.872202 || Reconstruct Loss| Train: 0.858664 Valid: 0.982592
-Validation loss decreased (0.939639 --> 0.927076).  Saving model ...
-100%|███████████████████████████████████████████| 62/62 [00:03<00:00, 18.60it/s]
-Epoch: 4 || Total Loss| Train: 0.815489 Vali: 0.926473 || Forecast Loss| Train:0.781411 Valid: 0.861820 || Reconstruct Loss| Train: 0.850130 Valid: 0.991548
-Validation loss decreased (0.927076 --> 0.926473).  Saving model ...
-100%|███████████████████████████████████████████| 62/62 [00:03<00:00, 18.54it/s]
-Epoch: 5 || Total Loss| Train: 0.805591 Vali: 0.924564 || Forecast Loss| Train:0.769125 Valid: 0.858213 || Reconstruct Loss| Train: 0.842621 Valid: 0.991416
-Validation loss decreased (0.926473 --> 0.924564).  Saving model ...
-100%|███████████████████████████████████████████| 62/62 [00:03<00:00, 18.60it/s]
-Epoch: 6 || Total Loss| Train: 0.799943 Vali: 0.915202 || Forecast Loss| Train:0.763010 Valid: 0.851379 || Reconstruct Loss| Train: 0.837834 Valid: 0.979905
-Validation loss decreased (0.924564 --> 0.915202).  Saving model ...
-100%|███████████████████████████████████████████| 62/62 [00:03<00:00, 18.63it/s]
-Epoch: 7 || Total Loss| Train: 0.795111 Vali: 0.910423 || Forecast Loss| Train:0.758830 Valid: 0.848574 || Reconstruct Loss| Train: 0.832959 Valid: 0.972883
-Validation loss decreased (0.915202 --> 0.910423).  Saving model ...
-100%|███████████████████████████████████████████| 62/62 [00:03<00:00, 18.57it/s]
-Epoch: 8 || Total Loss| Train: 0.786493 Vali: 0.909333 || Forecast Loss| Train:0.744433 Valid: 0.849520 || Reconstruct Loss| Train: 0.829397 Valid: 0.969678
-Validation loss decreased (0.910423 --> 0.909333).  Saving model ...
-100%|███████████████████████████████████████████| 62/62 [00:03<00:00, 18.61it/s]
-Epoch: 9 || Total Loss| Train: 0.780753 Vali: 0.910493 || Forecast Loss| Train:0.735368 Valid: 0.848260 || Reconstruct Loss| Train: 0.826499 Valid: 0.973407
-EarlyStopping counter: 1 out of 7
-100%|███████████████████████████████████████████| 62/62 [00:03<00:00, 18.54it/s]
-Epoch: 10 || Total Loss| Train: 0.775792 Vali: 0.905007 || Forecast Loss| Train:0.728942 Valid: 0.845289 || Reconstruct Loss| Train: 0.823424 Valid: 0.965164
-Validation loss decreased (0.909333 --> 0.905007).  Saving model ...
-100%|███████████████████████████████████████████| 62/62 [00:03<00:00, 18.59it/s]
-Epoch: 11 || Total Loss| Train: 0.772763 Vali: 0.908627 || Forecast Loss| Train:0.723967 Valid: 0.853354 || Reconstruct Loss| Train: 0.822268 Valid: 0.964708
-EarlyStopping counter: 1 out of 7
-100%|███████████████████████████████████████████| 62/62 [00:03<00:00, 18.73it/s]
-Epoch: 12 || Total Loss| Train: 0.768557 Vali: 0.903564 || Forecast Loss| Train:0.717600 Valid: 0.847638 || Reconstruct Loss| Train: 0.820180 Valid: 0.960114
-Validation loss decreased (0.905007 --> 0.903564).  Saving model ...
-100%|███████████████████████████████████████████| 62/62 [00:03<00:00, 18.68it/s]
-Epoch: 13 || Total Loss| Train: 0.768386 Vali: 0.905812 || Forecast Loss| Train:0.718618 Valid: 0.845172 || Reconstruct Loss| Train: 0.818723 Valid: 0.966883
-EarlyStopping counter: 1 out of 7
-100%|███████████████████████████████████████████| 62/62 [00:03<00:00, 18.70it/s]
-Epoch: 14 || Total Loss| Train: 0.764718 Vali: 0.906466 || Forecast Loss| Train:0.712617 Valid: 0.847427 || Reconstruct Loss| Train: 0.817335 Valid: 0.966036
-EarlyStopping counter: 2 out of 7
-100%|███████████████████████████████████████████| 62/62 [00:03<00:00, 18.65it/s]
-Epoch: 15 || Total Loss| Train: 0.765726 Vali: 0.902621 || Forecast Loss| Train:0.715785 Valid: 0.845768 || Reconstruct Loss| Train: 0.816680 Valid: 0.959912
-Validation loss decreased (0.903564 --> 0.902621).  Saving model ...
-100%|███████████████████████████████████████████| 62/62 [00:03<00:00, 18.70it/s]
-Epoch: 16 || Total Loss| Train: 0.761836 Vali: 0.902179 || Forecast Loss| Train:0.707932 Valid: 0.844574 || Reconstruct Loss| Train: 0.816341 Valid: 0.960336
-Validation loss decreased (0.902621 --> 0.902179).  Saving model ...
-100%|███████████████████████████████████████████| 62/62 [00:03<00:00, 18.68it/s]
-Epoch: 17 || Total Loss| Train: 0.760546 Vali: 0.905813 || Forecast Loss| Train:0.706831 Valid: 0.850619 || Reconstruct Loss| Train: 0.814873 Valid: 0.961413
-EarlyStopping counter: 1 out of 7
-100%|███████████████████████████████████████████| 62/62 [00:03<00:00, 18.59it/s]
-Epoch: 18 || Total Loss| Train: 0.760683 Vali: 0.902701 || Forecast Loss| Train:0.707729 Valid: 0.844690 || Reconstruct Loss| Train: 0.814501 Valid: 0.961339
-EarlyStopping counter: 2 out of 7
-100%|███████████████████████████████████████████| 62/62 [00:03<00:00, 18.71it/s]
-Epoch: 19 || Total Loss| Train: 0.755162 Vali: 0.902540 || Forecast Loss| Train:0.698339 Valid: 0.845244 || Reconstruct Loss| Train: 0.812851 Valid: 0.960565
-EarlyStopping counter: 3 out of 7
-100%|███████████████████████████████████████████| 62/62 [00:03<00:00, 18.70it/s]
-Epoch: 20 || Total Loss| Train: 0.755628 Vali: 0.902079 || Forecast Loss| Train:0.697122 Valid: 0.844536 || Reconstruct Loss| Train: 0.815024 Valid: 0.960496
-Validation loss decreased (0.902179 --> 0.902079).  Saving model ...
-100%|███████████████████████████████████████████| 62/62 [00:03<00:00, 18.73it/s]
-Epoch: 21 || Total Loss| Train: 0.755458 Vali: 0.904082 || Forecast Loss| Train:0.698738 Valid: 0.846868 || Reconstruct Loss| Train: 0.812706 Valid: 0.961855
-EarlyStopping counter: 1 out of 7
-100%|███████████████████████████████████████████| 62/62 [00:03<00:00, 18.78it/s]
-Epoch: 22 || Total Loss| Train: 0.753753 Vali: 0.902119 || Forecast Loss| Train:0.695491 Valid: 0.844741 || Reconstruct Loss| Train: 0.812767 Valid: 0.960163
-EarlyStopping counter: 2 out of 7
-100%|███████████████████████████████████████████| 62/62 [00:03<00:00, 18.77it/s]
-Epoch: 23 || Total Loss| Train: 0.754505 Vali: 0.903561 || Forecast Loss| Train:0.696985 Valid: 0.845718 || Reconstruct Loss| Train: 0.812565 Valid: 0.962157
-EarlyStopping counter: 3 out of 7
-100%|███████████████████████████████████████████| 62/62 [00:03<00:00, 18.68it/s]
-Epoch: 24 || Total Loss| Train: 0.751933 Vali: 0.906187 || Forecast Loss| Train:0.693507 Valid: 0.852786 || Reconstruct Loss| Train: 0.810826 Valid: 0.960264
-EarlyStopping counter: 4 out of 7
-100%|███████████████████████████████████████████| 62/62 [00:03<00:00, 18.55it/s]
-Epoch: 25 || Total Loss| Train: 0.752622 Vali: 0.903791 || Forecast Loss| Train:0.693335 Valid: 0.848979 || Reconstruct Loss| Train: 0.812468 Valid: 0.958946
-EarlyStopping counter: 5 out of 7
-100%|███████████████████████████████████████████| 62/62 [00:03<00:00, 18.63it/s]
-Epoch: 26 || Total Loss| Train: 0.752537 Vali: 0.902871 || Forecast Loss| Train:0.693357 Valid: 0.845619 || Reconstruct Loss| Train: 0.812482 Valid: 0.960798
-EarlyStopping counter: 6 out of 7
-100%|███████████████████████████████████████████| 62/62 [00:03<00:00, 18.68it/s]
-Epoch: 27 || Total Loss| Train: 0.750693 Vali: 0.904669 || Forecast Loss| Train:0.691195 Valid: 0.845822 || Reconstruct Loss| Train: 0.810786 Valid: 0.964154
-EarlyStopping counter: 7 out of 7
-100%|███████████████████████████████████████████| 10/10 [00:00<00:00, 32.08it/s]
-Threshold is 1.100099
-Valid || precision: 0.689655 recall: 1.000000 f1: 0.816327
-100%|███████████████████████████████████████████| 32/32 [00:01<00:00, 31.48it/s]
-Test || precision: 0.787879 recall: 0.917647 f1: 0.847826
-
-进程已结束,退出代码0
-
-
-ssh://wcs@10.112.79.143:22/home/wcs/miniconda3/envs/py39/bin/python -u /home/wcs/demo/AIOps/main.py
-100%|███████████████████████████████████████████| 10/10 [00:00<00:00, 28.35it/s]
+100%|███████████████████████████████████████████| 10/10 [00:00<00:00, 31.86it/s]
 Threshold is 1.590098
 Valid || precision: 0.727273 recall: 0.800000 f1: 0.761905
-100%|███████████████████████████████████████████| 32/32 [00:01<00:00, 31.86it/s]
+100%|███████████████████████████████████████████| 32/32 [00:01<00:00, 31.28it/s]
 Test || precision: 0.857143 recall: 0.776471 f1: 0.814815
-100%|███████████████████████████████████████████| 10/10 [00:00<00:00, 32.70it/s]
+====================End==================== 
+
+
+
+
+
+====================Trace====================
+100%|███████████████████████████████████████████| 62/62 [00:00<00:00, 62.09it/s]
+Init || Total Loss| Train: 0.967512 Vali: 1.069971 || Forecast Loss| Train:0.967781 Valid: 1.065497 || Reconstruct Loss| Train: 0.969917 Valid: 1.076482
+100%|███████████████████████████████████████████| 62/62 [00:02<00:00, 27.10it/s]
+Epoch: 1 || Total Loss| Train: 0.959530 Vali: 1.080954 || Forecast Loss| Train:0.957439 Valid: 1.077321 || Reconstruct Loss| Train: 0.965472 Valid: 1.086677
+Validation loss decreased (inf --> 1.080954).  Saving model ...
+100%|███████████████████████████████████████████| 62/62 [00:02<00:00, 27.36it/s]
+Epoch: 2 || Total Loss| Train: 0.951665 Vali: 1.062604 || Forecast Loss| Train:0.955688 Valid: 1.064052 || Reconstruct Loss| Train: 0.949929 Valid: 1.062666
+Validation loss decreased (1.080954 --> 1.062604).  Saving model ...
+100%|███████████████████████████████████████████| 62/62 [00:02<00:00, 27.35it/s]
+Epoch: 3 || Total Loss| Train: 0.941687 Vali: 1.057870 || Forecast Loss| Train:0.944118 Valid: 1.057816 || Reconstruct Loss| Train: 0.942057 Valid: 1.060370
+Validation loss decreased (1.062604 --> 1.057870).  Saving model ...
+100%|███████████████████████████████████████████| 62/62 [00:02<00:00, 27.34it/s]
+Epoch: 4 || Total Loss| Train: 0.943213 Vali: 1.051910 || Forecast Loss| Train:0.956466 Valid: 1.049240 || Reconstruct Loss| Train: 0.935292 Valid: 1.056085
+Validation loss decreased (1.057870 --> 1.051910).  Saving model ...
+100%|███████████████████████████████████████████| 62/62 [00:02<00:00, 27.38it/s]
+Epoch: 5 || Total Loss| Train: 0.936331 Vali: 1.052178 || Forecast Loss| Train:0.941223 Valid: 1.051398 || Reconstruct Loss| Train: 0.933158 Valid: 1.054182
+EarlyStopping counter: 1 out of 7
+100%|███████████████████████████████████████████| 62/62 [00:02<00:00, 27.40it/s]
+Epoch: 6 || Total Loss| Train: 0.937445 Vali: 1.043138 || Forecast Loss| Train:0.942822 Valid: 1.042634 || Reconstruct Loss| Train: 0.934503 Valid: 1.048036
+Validation loss decreased (1.051910 --> 1.043138).  Saving model ...
+100%|███████████████████████████████████████████| 62/62 [00:02<00:00, 27.39it/s]
+Epoch: 7 || Total Loss| Train: 0.933113 Vali: 1.044990 || Forecast Loss| Train:0.937883 Valid: 1.044865 || Reconstruct Loss| Train: 0.930550 Valid: 1.048254
+EarlyStopping counter: 1 out of 7
+100%|███████████████████████████████████████████| 62/62 [00:02<00:00, 27.42it/s]
+Epoch: 8 || Total Loss| Train: 0.932072 Vali: 1.056293 || Forecast Loss| Train:0.936634 Valid: 1.072336 || Reconstruct Loss| Train: 0.929608 Valid: 1.045473
+EarlyStopping counter: 2 out of 7
+100%|███████████████████████████████████████████| 62/62 [00:02<00:00, 27.40it/s]
+Epoch: 9 || Total Loss| Train: 0.929039 Vali: 1.055971 || Forecast Loss| Train:0.934701 Valid: 1.068006 || Reconstruct Loss| Train: 0.925941 Valid: 1.047602
+EarlyStopping counter: 3 out of 7
+100%|███████████████████████████████████████████| 62/62 [00:02<00:00, 27.41it/s]
+Epoch: 10 || Total Loss| Train: 0.927216 Vali: 1.052365 || Forecast Loss| Train:0.931321 Valid: 1.059373 || Reconstruct Loss| Train: 0.926298 Valid: 1.046737
+EarlyStopping counter: 4 out of 7
+100%|███████████████████████████████████████████| 62/62 [00:02<00:00, 27.43it/s]
+Epoch: 11 || Total Loss| Train: 0.928507 Vali: 1.042046 || Forecast Loss| Train:0.933175 Valid: 1.042857 || Reconstruct Loss| Train: 0.926371 Valid: 1.044864
+Validation loss decreased (1.043138 --> 1.042046).  Saving model ...
+100%|███████████████████████████████████████████| 62/62 [00:02<00:00, 27.40it/s]
+Epoch: 12 || Total Loss| Train: 0.924144 Vali: 1.052967 || Forecast Loss| Train:0.930428 Valid: 1.061514 || Reconstruct Loss| Train: 0.921015 Valid: 1.046990
+EarlyStopping counter: 1 out of 7
+100%|███████████████████████████████████████████| 62/62 [00:02<00:00, 27.42it/s]
+Epoch: 13 || Total Loss| Train: 0.928165 Vali: 1.047305 || Forecast Loss| Train:0.933653 Valid: 1.048820 || Reconstruct Loss| Train: 0.925323 Valid: 1.047832
+EarlyStopping counter: 2 out of 7
+100%|███████████████████████████████████████████| 62/62 [00:02<00:00, 27.23it/s]
+Epoch: 14 || Total Loss| Train: 0.926015 Vali: 1.048113 || Forecast Loss| Train:0.931538 Valid: 1.053849 || Reconstruct Loss| Train: 0.922431 Valid: 1.044408
+EarlyStopping counter: 3 out of 7
+100%|███████████████████████████████████████████| 62/62 [00:02<00:00, 27.39it/s]
+Epoch: 15 || Total Loss| Train: 0.920365 Vali: 1.052638 || Forecast Loss| Train:0.925980 Valid: 1.060537 || Reconstruct Loss| Train: 0.917953 Valid: 1.046785
+EarlyStopping counter: 4 out of 7
+100%|███████████████████████████████████████████| 62/62 [00:02<00:00, 27.42it/s]
+Epoch: 16 || Total Loss| Train: 0.921942 Vali: 1.047025 || Forecast Loss| Train:0.926760 Valid: 1.051768 || Reconstruct Loss| Train: 0.920510 Valid: 1.045650
+EarlyStopping counter: 5 out of 7
+100%|███████████████████████████████████████████| 62/62 [00:02<00:00, 27.44it/s]
+Epoch: 17 || Total Loss| Train: 0.925676 Vali: 1.051080 || Forecast Loss| Train:0.935635 Valid: 1.059967 || Reconstruct Loss| Train: 0.919082 Valid: 1.043710
+EarlyStopping counter: 6 out of 7
+100%|███████████████████████████████████████████| 62/62 [00:02<00:00, 27.47it/s]
+Epoch: 18 || Total Loss| Train: 0.925749 Vali: 1.053444 || Forecast Loss| Train:0.938215 Valid: 1.068054 || Reconstruct Loss| Train: 0.916733 Valid: 1.041073
+EarlyStopping counter: 7 out of 7
+100%|███████████████████████████████████████████| 10/10 [00:00<00:00, 32.93it/s]
 Threshold is 0.410100
 Valid || precision: 0.269841 recall: 0.850000 f1: 0.409639
-100%|███████████████████████████████████████████| 32/32 [00:00<00:00, 32.35it/s]
+100%|███████████████████████████████████████████| 32/32 [00:00<00:00, 32.41it/s]
 Test || precision: 0.195704 recall: 0.964706 f1: 0.325397
-100%|███████████████████████████████████████████| 10/10 [00:00<00:00, 32.16it/s]
+====================End==================== 
+
+
+
+
+
+====================Log====================
+100%|██████████████████████████████████████| 9991/9991 [00:55<00:00, 178.63it/s]
+Init || Total Loss| Train: 6.098056 Vali: 6.098061
+100%|███████████████████████████████████████| 9991/9991 [01:48<00:00, 92.30it/s]
+Epoch: 1 || Total Loss| Train: 5.830704 Vali: 5.897531
+Validation loss decreased (inf --> 5.897531).  Saving model ...
+100%|███████████████████████████████████████| 9991/9991 [01:48<00:00, 92.23it/s]
+Epoch: 2 || Total Loss| Train: 5.830173 Vali: 5.897458
+Validation loss decreased (5.897531 --> 5.897458).  Saving model ...
+100%|███████████████████████████████████████| 9991/9991 [01:48<00:00, 92.18it/s]
+Epoch: 3 || Total Loss| Train: 5.830178 Vali: 5.897492
+EarlyStopping counter: 1 out of 7
+100%|███████████████████████████████████████| 9991/9991 [01:48<00:00, 92.20it/s]
+Epoch: 4 || Total Loss| Train: 5.830193 Vali: 5.897480
+EarlyStopping counter: 2 out of 7
+100%|███████████████████████████████████████| 9991/9991 [01:48<00:00, 92.31it/s]
+Epoch: 5 || Total Loss| Train: 5.830201 Vali: 5.897500
+EarlyStopping counter: 3 out of 7
+100%|███████████████████████████████████████| 9991/9991 [01:48<00:00, 92.19it/s]
+Epoch: 6 || Total Loss| Train: 5.830179 Vali: 5.897509
+EarlyStopping counter: 4 out of 7
+100%|███████████████████████████████████████| 9991/9991 [01:48<00:00, 92.20it/s]
+Epoch: 7 || Total Loss| Train: 5.830189 Vali: 5.897491
+EarlyStopping counter: 5 out of 7
+100%|███████████████████████████████████████| 9991/9991 [01:48<00:00, 92.27it/s]
+Epoch: 8 || Total Loss| Train: 5.830192 Vali: 5.897504
+EarlyStopping counter: 6 out of 7
+100%|███████████████████████████████████████| 9991/9991 [01:48<00:00, 92.28it/s]
+Epoch: 9 || Total Loss| Train: 5.830189 Vali: 5.897464
+EarlyStopping counter: 7 out of 7
+100%|████████████████████████████████████████| 368/368 [00:01<00:00, 212.96it/s]
+Threshold is 0.000000
+Valid || precision: 0.250000 recall: 1.000000 f1: 0.400000
+100%|██████████████████████████████████████| 7823/7823 [00:36<00:00, 213.47it/s]
+Valid || precision: 0.176252 recall: 1.000000 f1: 0.299685
+====================End==================== 
+
+
+
+
+
+====================Metric & Trace====================
+100%|███████████████████████████████████████████| 62/62 [00:01<00:00, 59.00it/s]
+Init || Total Loss| Train: 0.995113 Vali: 1.032840 || Forecast Loss| Train:0.996985 Valid: 1.042116 || Reconstruct Loss| Train: 0.993809 Valid: 1.024438
+100%|███████████████████████████████████████████| 62/62 [00:03<00:00, 18.23it/s]
+Epoch: 1 || Total Loss| Train: 0.906819 Vali: 0.948175 || Forecast Loss| Train:0.878613 Valid: 0.898464 || Reconstruct Loss| Train: 0.935614 Valid: 0.998353
+Validation loss decreased (inf --> 0.948175).  Saving model ...
+100%|███████████████████████████████████████████| 62/62 [00:03<00:00, 18.65it/s]
+Epoch: 2 || Total Loss| Train: 0.846104 Vali: 0.950745 || Forecast Loss| Train:0.817490 Valid: 0.863684 || Reconstruct Loss| Train: 0.875326 Valid: 1.038360
+EarlyStopping counter: 1 out of 7
+100%|███████████████████████████████████████████| 62/62 [00:03<00:00, 18.71it/s]
+Epoch: 3 || Total Loss| Train: 0.829171 Vali: 0.915691 || Forecast Loss| Train:0.800321 Valid: 0.853182 || Reconstruct Loss| Train: 0.858575 Valid: 0.978803
+Validation loss decreased (0.948175 --> 0.915691).  Saving model ...
+100%|███████████████████████████████████████████| 62/62 [00:03<00:00, 18.75it/s]
+Epoch: 4 || Total Loss| Train: 0.813031 Vali: 0.918517 || Forecast Loss| Train:0.780400 Valid: 0.860034 || Reconstruct Loss| Train: 0.846177 Valid: 0.977490
+EarlyStopping counter: 1 out of 7
+100%|███████████████████████████████████████████| 62/62 [00:03<00:00, 18.74it/s]
+Epoch: 5 || Total Loss| Train: 0.807624 Vali: 0.916920 || Forecast Loss| Train:0.775363 Valid: 0.849929 || Reconstruct Loss| Train: 0.840615 Valid: 0.984595
+EarlyStopping counter: 2 out of 7
+100%|███████████████████████████████████████████| 62/62 [00:03<00:00, 18.72it/s]
+Epoch: 6 || Total Loss| Train: 0.797369 Vali: 0.913490 || Forecast Loss| Train:0.758805 Valid: 0.847657 || Reconstruct Loss| Train: 0.836547 Valid: 0.979860
+Validation loss decreased (0.915691 --> 0.913490).  Saving model ...
+100%|███████████████████████████████████████████| 62/62 [00:03<00:00, 18.72it/s]
+Epoch: 7 || Total Loss| Train: 0.791986 Vali: 0.912474 || Forecast Loss| Train:0.752848 Valid: 0.845974 || Reconstruct Loss| Train: 0.831636 Valid: 0.979536
+Validation loss decreased (0.913490 --> 0.912474).  Saving model ...
+100%|███████████████████████████████████████████| 62/62 [00:03<00:00, 18.72it/s]
+Epoch: 8 || Total Loss| Train: 0.787212 Vali: 0.917986 || Forecast Loss| Train:0.744928 Valid: 0.852753 || Reconstruct Loss| Train: 0.829954 Valid: 0.983650
+EarlyStopping counter: 1 out of 7
+100%|███████████████████████████████████████████| 62/62 [00:03<00:00, 18.72it/s]
+Epoch: 9 || Total Loss| Train: 0.784217 Vali: 0.912111 || Forecast Loss| Train:0.742116 Valid: 0.843950 || Reconstruct Loss| Train: 0.826990 Valid: 0.981218
+Validation loss decreased (0.912474 --> 0.912111).  Saving model ...
+100%|███████████████████████████████████████████| 62/62 [00:03<00:00, 18.72it/s]
+Epoch: 10 || Total Loss| Train: 0.779104 Vali: 0.908124 || Forecast Loss| Train:0.735345 Valid: 0.848362 || Reconstruct Loss| Train: 0.823399 Valid: 0.968278
+Validation loss decreased (0.912111 --> 0.908124).  Saving model ...
+100%|███████████████████████████████████████████| 62/62 [00:03<00:00, 18.72it/s]
+Epoch: 11 || Total Loss| Train: 0.774309 Vali: 0.909962 || Forecast Loss| Train:0.728845 Valid: 0.852473 || Reconstruct Loss| Train: 0.820255 Valid: 0.968036
+EarlyStopping counter: 1 out of 7
+100%|███████████████████████████████████████████| 62/62 [00:03<00:00, 18.72it/s]
+Epoch: 12 || Total Loss| Train: 0.774015 Vali: 0.905675 || Forecast Loss| Train:0.728647 Valid: 0.843466 || Reconstruct Loss| Train: 0.820289 Valid: 0.968465
+Validation loss decreased (0.908124 --> 0.905675).  Saving model ...
+100%|███████████████████████████████████████████| 62/62 [00:03<00:00, 18.66it/s]
+Epoch: 13 || Total Loss| Train: 0.770165 Vali: 0.904464 || Forecast Loss| Train:0.722762 Valid: 0.844939 || Reconstruct Loss| Train: 0.818069 Valid: 0.964560
+Validation loss decreased (0.905675 --> 0.904464).  Saving model ...
+100%|███████████████████████████████████████████| 62/62 [00:03<00:00, 18.69it/s]
+Epoch: 14 || Total Loss| Train: 0.766643 Vali: 0.908097 || Forecast Loss| Train:0.716887 Valid: 0.850717 || Reconstruct Loss| Train: 0.816959 Valid: 0.966053
+EarlyStopping counter: 1 out of 7
+100%|███████████████████████████████████████████| 62/62 [00:03<00:00, 18.68it/s]
+Epoch: 15 || Total Loss| Train: 0.764702 Vali: 0.907645 || Forecast Loss| Train:0.713614 Valid: 0.851474 || Reconstruct Loss| Train: 0.816174 Valid: 0.964402
+EarlyStopping counter: 2 out of 7
+100%|███████████████████████████████████████████| 62/62 [00:03<00:00, 18.59it/s]
+Epoch: 16 || Total Loss| Train: 0.762289 Vali: 0.910000 || Forecast Loss| Train:0.710050 Valid: 0.854575 || Reconstruct Loss| Train: 0.815017 Valid: 0.966112
+EarlyStopping counter: 3 out of 7
+100%|███████████████████████████████████████████| 62/62 [00:03<00:00, 18.46it/s]
+Epoch: 17 || Total Loss| Train: 0.760144 Vali: 0.907631 || Forecast Loss| Train:0.707419 Valid: 0.851193 || Reconstruct Loss| Train: 0.813477 Valid: 0.964399
+EarlyStopping counter: 4 out of 7
+100%|███████████████████████████████████████████| 62/62 [00:03<00:00, 18.66it/s]
+Epoch: 18 || Total Loss| Train: 0.758416 Vali: 0.908797 || Forecast Loss| Train:0.703957 Valid: 0.854046 || Reconstruct Loss| Train: 0.813848 Valid: 0.963958
+EarlyStopping counter: 5 out of 7
+100%|███████████████████████████████████████████| 62/62 [00:03<00:00, 18.69it/s]
+Epoch: 19 || Total Loss| Train: 0.759430 Vali: 0.908413 || Forecast Loss| Train:0.706997 Valid: 0.850953 || Reconstruct Loss| Train: 0.812469 Valid: 0.966557
+EarlyStopping counter: 6 out of 7
+100%|███████████████████████████████████████████| 62/62 [00:03<00:00, 18.69it/s]
+Epoch: 20 || Total Loss| Train: 0.758158 Vali: 0.908088 || Forecast Loss| Train:0.705522 Valid: 0.851910 || Reconstruct Loss| Train: 0.811427 Valid: 0.964906
+EarlyStopping counter: 7 out of 7
+100%|███████████████████████████████████████████| 10/10 [00:00<00:00, 30.38it/s]
+Threshold is 1.030099
+Valid || precision: 0.645161 recall: 1.000000 f1: 0.784314
+100%|███████████████████████████████████████████| 32/32 [00:01<00:00, 31.03it/s]
+Test || precision: 0.742857 recall: 0.917647 f1: 0.821053
+====================End==================== 
+
+
+
+
+
+====================Metric & Trace & Log====================
 Threshold is 1.100099
-Valid || precision: 0.689655 recall: 1.000000 f1: 0.816327
-100%|███████████████████████████████████████████| 32/32 [00:01<00:00, 31.85it/s]
-Test || precision: 0.787879 recall: 0.917647 f1: 0.847826
+Valid || precision: 0.666667 recall: 1.000000 f1: 0.800000
+Valid || precision: 0.750000 recall: 0.917647 f1: 0.825397
+====================End==================== 
+
+
+
+
+
+====================Root Cause====================
+====================End==================== 
+
+
+
+
+
 
 进程已结束,退出代码0
-
-
-
-
-ssh://wcs@10.112.79.143:22/home/wcs/miniconda3/envs/py39/bin/python -u /home/wcs/demo/AIOps/main.py
-100%|████████████████████████████████████████| 368/368 [00:01<00:00, 245.12it/s]
-Threshold is 0.346300
-Valid || precision: 0.256410 recall: 1.000000 f1: 0.408163
-100%|██████████████████████████████████████| 7823/7823 [00:31<00:00, 248.18it/s]
-Valid || precision: 0.177358 recall: 0.989474 f1: 0.300800
