@@ -1,5 +1,6 @@
 import os
 
+import joblib
 import numpy as np
 import pandas as pd
 import torch
@@ -13,19 +14,18 @@ from model.DeepLog.data.dataset import MyDataset
 from model.DeepLog.model.deeplog import DeepLog
 from model.DeepLog.utils.plot import plot_loss
 from utils.earlystoping import EarlyStopping
+from utils.evalmethods import best_threshold
 
 
 class LogExp:
-    def __init__(self, nEvent, error_rate=0.01, g_rate=0.1, epochs=100, batch_size=16, patience=7, lr=0.001, w=5,
-                 verbose=True):
+    def __init__(self, nEvent, n=0.1, epochs=100, batch_size=32, patience=7, lr=0.001, w=128, verbose=True):
         self.epochs = epochs
         self.batch_size = batch_size
         self.patience = patience
         self.lr = lr
         self.w = w
         self.nEvent = nEvent
-        self.g = int(nEvent * g_rate)
-        self.error_rate = error_rate
+        self.n = n
 
         self.verbose = verbose
 
@@ -37,7 +37,9 @@ class LogExp:
             os.makedirs('./result/result/')
 
         self.modelpath = './checkpoint/log_model.pkl'
+        self.thresholdpath = './checkpoint/log_threshold.pkl'
         self.imgpath = './result/img/log_loss.png'
+        self.validresultpath = './result/result/log_result_valid.csv'
         self.resultpath = './result/result/log_result.csv'
 
         self._get_model()
@@ -125,7 +127,7 @@ class LogExp:
 
         plot_loss(lossdict["train"], lossdict["valid"], self.imgpath)
 
-    def detection(self, df, label):
+    def update_threshold(self, df, label):
         self.model.load_state_dict(torch.load(self.modelpath))
 
         data = df['EventId'].values
@@ -133,25 +135,85 @@ class LogExp:
         dataloader = DataLoader(dataset, batch_size=self.batch_size, shuffle=False)
 
         self.model.eval()
-        true, pred = [], []
-        result = pd.DataFrame()
+        pred, true = [], []
         for (batch_X, batch_y) in tqdm(dataloader):
             out, _ = self._process_one_batch(batch_X, batch_y)
             true.extend(batch_y.detach().cpu().numpy())
             pred.extend(out.detach().cpu().numpy())
+        pred, true = np.array(pred), np.array(true)
+        pred = pred.argsort(axis=1)
+        score = []
+        for i in range(len(true)):
+            s = np.argwhere(pred[i][::-1] == true[i])[0][0] / (self.nEvent-1)
+            score.append(s ** self.n)
+        score = np.array(score)
 
-        result['True'] = true
-        result['Pred'] = pred
-        result['Pred'] = result.apply(lambda x: 1 - int(x['True'] in x['Pred'].argsort()[-self.g:][::-1]), axis=1)
+        result = pd.DataFrame()
         result['timestamp'] = df['timestamp'].values[self.w:]
-        result = result[['timestamp', 'Pred']].groupby('timestamp').apply(
-            lambda x: np.sum(x) > len(x) * self.error_rate).reset_index()
-        result['Pred'] = result['Pred'].astype(np.int)
-        label = pd.merge(label, result, on='timestamp', how='left')
-        label[['timestamp', 'label', 'Pred']].to_csv(self.resultpath, index=False)
-        actual_label = label['label'].fillna(0).values
-        test_pred = label['Pred'].fillna(0).values
+        result['score'] = score
+        result = result.groupby('timestamp').mean().reset_index().sort_values('timestamp')
 
-        print("Test || precision: {0:.6f} recall: {1:.6f} f1: {2:.6f}".format(precision_score(actual_label, test_pred),
-                                                                              recall_score(actual_label, test_pred),
-                                                                              f1_score(actual_label, test_pred)))
+        result = pd.merge(result, label, on='timestamp', how='right')
+
+        actual_label = result['label'].values
+        valid_score = result['score'].fillna(0).values
+
+        threshold = best_threshold(valid_score, actual_label, start=0.0, end=1, search_step=10000)
+        if self.verbose:
+            print('Threshold is {0:.6f}'.format(threshold))
+
+        valid_pred = (valid_score > threshold).astype(np.int)
+
+        result["pred"] = valid_pred
+        result["label"] = actual_label
+        result["threshold"] = threshold
+
+        result.drop(columns=['root_cause']).to_csv(self.validresultpath, index=False)
+        print(
+            "Valid || precision: {0:.6f} recall: {1:.6f} f1: {2:.6f}".format(precision_score(actual_label, valid_pred),
+                                                                             recall_score(actual_label, valid_pred),
+                                                                             f1_score(actual_label, valid_pred)))
+        joblib.dump(threshold, self.thresholdpath)
+
+    def detection(self, df, label):
+        self.model.load_state_dict(torch.load(self.modelpath))
+        threshold = joblib.load(self.thresholdpath)
+
+        data = df['EventId'].values
+        dataset = MyDataset(data, w=self.w, num_class=self.nEvent)
+        dataloader = DataLoader(dataset, batch_size=self.batch_size, shuffle=False)
+
+        self.model.eval()
+        pred, true = [], []
+        for (batch_X, batch_y) in tqdm(dataloader):
+            out, _ = self._process_one_batch(batch_X, batch_y)
+            true.extend(batch_y.detach().cpu().numpy())
+            pred.extend(out.detach().cpu().numpy())
+        pred, true = np.array(pred), np.array(true)
+        pred = pred.argsort(axis=1)
+        score = []
+        for i in range(len(true)):
+            s = np.argwhere(pred[i][::-1] == true[i])[0][0] / (self.nEvent-1)
+            score.append(s ** self.n)
+        score = np.array(score)
+
+        result = pd.DataFrame()
+        result['timestamp'] = df['timestamp'].values[self.w:]
+        result['score'] = score
+        result = result.groupby('timestamp').mean().reset_index().sort_values('timestamp')
+
+        result = pd.merge(result, label, on='timestamp', how='right')
+        actual_label = result['label'].values
+        valid_score = result['score'].fillna(0).values
+
+        valid_pred = (valid_score > threshold).astype(np.int)
+
+        result["pred"] = valid_pred
+        result["label"] = actual_label
+        result["threshold"] = threshold
+
+        result.drop(columns=['root_cause']).to_csv(self.resultpath, index=False)
+        print(
+            "Valid || precision: {0:.6f} recall: {1:.6f} f1: {2:.6f}".format(precision_score(actual_label, valid_pred),
+                                                                             recall_score(actual_label, valid_pred),
+                                                                             f1_score(actual_label, valid_pred)))

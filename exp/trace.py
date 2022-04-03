@@ -204,7 +204,7 @@ class TraceExp:
         dataset = MyDataset(data, w=self.w)
         dataloader = DataLoader(dataset, batch_size=self.batch_size, shuffle=False)
 
-        actual_label = label[self.w:]
+        actual_label = label['label'].values[self.w:]
         validresult = self._get_score(data, dataloader)
         valid_score = validresult["Score_Global"].values
 
@@ -233,7 +233,7 @@ class TraceExp:
         dataset = MyDataset(data, w=self.w)
         dataloader = DataLoader(dataset, batch_size=self.batch_size, shuffle=False)
 
-        actual_label = label[self.w:]
+        actual_label = label['label'].values[self.w:]
         testresult = self._get_score(data, dataloader)
         test_score = testresult["Score_Global"].values
         test_pred = (test_score > threshold).astype(np.int)

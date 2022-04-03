@@ -233,3 +233,13 @@ Valid || precision: 0.689655 recall: 1.000000 f1: 0.816327
 Test || precision: 0.787879 recall: 0.917647 f1: 0.847826
 
 进程已结束,退出代码0
+
+
+
+
+ssh://wcs@10.112.79.143:22/home/wcs/miniconda3/envs/py39/bin/python -u /home/wcs/demo/AIOps/main.py
+100%|████████████████████████████████████████| 368/368 [00:01<00:00, 245.12it/s]
+Threshold is 0.346300
+Valid || precision: 0.256410 recall: 1.000000 f1: 0.408163
+100%|██████████████████████████████████████| 7823/7823 [00:31<00:00, 248.18it/s]
+Valid || precision: 0.177358 recall: 0.989474 f1: 0.300800

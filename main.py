@@ -2,9 +2,7 @@ import warnings
 
 import pandas as pd
 
-from exp.metric import MetricExp
-from exp.metric_and_trace import MetricTraceExp
-from exp.trace import TraceExp
+from exp.log import LogExp
 from utils.setseed import set_seed
 
 warnings.filterwarnings("ignore")
@@ -17,15 +15,16 @@ if __name__ == '__main__':
     # exp.evaluation()
 
     # log
-    # train = pd.read_csv('./dataset/processed/train/logs/logs.csv')
-    # test = pd.read_csv('./dataset/processed/test/logs/logs.csv')
-    # label = pd.read_csv('./dataset/processed/test/label.csv')
-    # nEvent = len(pd.read_csv('./dataset/processed/tmp/log.log_templates.csv'))
-    # exp = LogExp(nEvent)
-    # exp.fit(train)
-    # exp.detection(test, label)
+    train = pd.read_csv('./dataset/processed/train/logs/logs.csv')
+    test = pd.read_csv('./dataset/processed/test/logs/logs.csv')
+    label = pd.read_csv('./dataset/processed/test/label.csv')
+    nEvent = len(pd.read_csv('./dataset/processed/tmp/log.log_templates.csv'))
+    exp = LogExp(nEvent)
+    exp.fit(train)
+    exp.update_threshold(test[test['timestamp'] < label['timestamp'].values[180]], label.iloc[:180])
+    exp.detection(test[test['timestamp'] >= label['timestamp'].values[180]], label.iloc[180:])
 
-
+'''
     # matric
     train = pd.read_csv('dataset/processed/train/metrics/metrics_clean.csv')
     test = pd.read_csv('dataset/processed/test/metrics/metrics_clean.csv')
@@ -35,9 +34,9 @@ if __name__ == '__main__':
     feature = feature[feature['use'] == 1]['metric'].values.tolist()
 
     exp = MetricExp(feature)
-    # exp.fit(train)
-    exp.update_threshold(test.iloc[:180], label['label'].values[:180])
-    exp.detection(test.iloc[180:], label['label'].values[180:])
+    exp.fit(train)
+    exp.update_threshold(test.iloc[:180], label.iloc[:180])
+    exp.detection(test.iloc[180:], label.iloc[180:])
 
     # trace
     train = pd.read_csv('dataset/processed/train/traces/traces_clean.csv')
@@ -55,9 +54,9 @@ if __name__ == '__main__':
                'user -> user']
 
     exp = TraceExp(feature)
-    # exp.fit(train)
-    exp.update_threshold(test.iloc[:180], label['label'].values[:180])
-    exp.detection(test.iloc[180:], label['label'].values[180:])
+    exp.fit(train)
+    exp.update_threshold(test.iloc[:180], label.iloc[:180])
+    exp.detection(test.iloc[180:], label.iloc[180:])
 
     # matric & trace
     train_metric = pd.read_csv('dataset/processed/train/metrics/metrics_clean.csv')
@@ -84,6 +83,7 @@ if __name__ == '__main__':
                     'user -> user'])
 
     exp = MetricTraceExp(feature)
-    # exp.fit(train)
-    exp.update_threshold(test.iloc[:180], label['label'].values[:180])
-    exp.detection(test.iloc[180:], label['label'].values[180:])
+    exp.fit(train)
+    exp.update_threshold(test.iloc[:180], label.iloc[:180])
+    exp.detection(test.iloc[180:], label.iloc[180:])
+'''
