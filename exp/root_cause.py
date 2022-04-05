@@ -1,79 +1,59 @@
 import os
 import warnings
-from functools import reduce
 
 import numpy as np
 import pandas as pd
-from joblib import Parallel, delayed
 from tqdm import tqdm
 
-from model.Squeeze.model.param import Param
-from model.Squeeze.model.squeeze import Squeeze
-from model.Squeeze.utils.attribute_combination import AttributeCombination as AC
-from model.Squeeze.utils.compare import compare
+from model.DyCause.model.dycause import DyCause
+from model.DyCause.utils.evaluation_function import pr_stat, my_acc, print_prk_acc
 
 warnings.filterwarnings("ignore")
 
 
 class RootCauseExp:
-    def __init__(self, input_path, num_workers=10):
-        self.input_path = input_path
-        self.num_workers = num_workers
+    def __init__(self, feature):
+        self.feature = feature
+        self.result = None
+        self.ranked_nodes = None
 
         if not os.path.exists('./result/result/'):
             os.makedirs('./result/result/')
-        self.result_path = './result/result/root_cause_result.csv'
 
-    def executor(self, timestamp):
-        df = pd.read_csv(self.input_path + timestamp + '.csv')
-        model = Squeeze(data=df, param=Param())
-        model.run()
+        self.out_path = './result/result/root_cause_result.csv'
 
-        try:
-            root_cause = AC.batch_to_string(
-                frozenset(reduce(lambda x, y: x.union(y), model.root_cause, set())))
-        except IndexError:
-            root_cause = ""
+    def location(self, df, error_times):
+        data = df[self.feature].values
+        self.result = pd.DataFrame()
+        self.result['timestamp'] = error_times[:1]
 
-        return [timestamp, root_cause]
+        self.ranked_nodes = []
+        for error_time in tqdm(error_times):
+            error_time = df['timestamp'].values.tolist().index(error_time)
+            dycause = DyCause(feature=self.feature)
+            ranked_node = dycause.location(data=data, error_time=error_time)[:5]
+            self.ranked_nodes.append(ranked_node)
+            break
+        self.result['ranked_nodes'] = list(map(lambda x: ' '.join(str(s[0]) for s in x), self.ranked_nodes))
 
-    def location(self):
-        filenames = sorted(os.listdir(self.input_path))[:-1]
-        try:
-            filenames.remove('.ipynb_checkpoints')
-        except:
-            pass
-        timestamps = list(map(lambda x: x.split('.')[0], filenames))
+    def evaluation(self, true_root_cause):
+        prkS_list, acc_list = [], []
+        self.result['label'] = true_root_cause[:1]
+        for i in range(len(self.result)):
+            prkS = pr_stat(self.ranked_nodes[i], true_root_cause.reshape(-1, 1)[i])
+            acc = my_acc(self.ranked_nodes[i], true_root_cause.reshape(-1, 1)[i], len(self.feature))
+            prkS_list.append(prkS)
+            acc_list.append(acc)
 
-        root_cause = Parallel(n_jobs=self.num_workers, backend="multiprocessing")(
-            delayed(self.executor)(timestamp)
-            for timestamp in tqdm(timestamps))
-        root_cause = np.array(root_cause).T
+        self.result['PR@1'] = np.array(prkS_list).T[0]
+        self.result['PR@2'] = np.array(prkS_list).T[1]
+        self.result['PR@3'] = np.array(prkS_list).T[2]
+        self.result['PR@4'] = np.array(prkS_list).T[3]
+        self.result['PR@5'] = np.array(prkS_list).T[4]
+        self.result['Acc'] = acc_list
 
-        result = pd.DataFrame()
-        result['timestamp'] = root_cause[0]
-        result['predict'] = root_cause[1]
+        self.result.to_csv(self.out_path, index=False)
 
-        label = pd.read_csv(self.input_path + 'injection_info.csv')
-        result = pd.merge(label, result, on='timestamp', how='left')
-        result.rename(columns={'root_cause': 'label'}, inplace=True)
-        result['label'] = result['label'].apply(lambda x: 'device=' + x.split('_usage_')[0] + '&node=' + x.split('_usage_')[1])
-        result[['timestamp', 'label', 'predict']].to_csv(self.result_path, index=False)
-
-    def evaluation(self):
-        df = pd.read_csv(self.result_path)
-
-        df['predict'].fillna("", inplace=True)
-        df['FN'] = df.apply(lambda x: compare(x['label'], x['predict'], columns=['device', 'node'])[0], axis=1)
-        df['TP'] = df.apply(lambda x: compare(x['label'], x['predict'], columns=['device', 'node'])[1], axis=1)
-        df['FP'] = df.apply(lambda x: compare(x['label'], x['predict'], columns=['device', 'node'])[2], axis=1)
-
-        df[['timestamp', 'label', 'predict', 'FN', 'TP', 'FP']].to_csv(self.result_path,index=False)
-
-        f1 = 2 * np.sum(df['TP']) / (2 * np.sum(df['TP']) + np.sum(df['FP']) + np.sum(df['FN']))
-        precision = np.sum(df['TP']) / (np.sum(df['TP']) + np.sum(df['FP']))
-        recall = np.sum(df['TP']) / (np.sum(df['TP']) + np.sum(df['FN']))
-
-        print("f1: %.4f" % f1)
-        print("precision: %.4f" % precision)
-        print("recall: %.4f" % recall)
+        prkS = np.mean(np.array(prkS_list), axis=0).tolist()
+        acc = np.mean(np.array(acc_list))
+        print_prk_acc(prkS, acc)
