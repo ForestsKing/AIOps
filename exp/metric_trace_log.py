@@ -9,7 +9,7 @@ from utils.evalmethods import best_threshold
 
 
 class MetricTraceLogExp:
-    def __init__(self, log_rate=0.25, verbose=True):
+    def __init__(self, log_rate=0.1, verbose=True):
         self.log_rate = log_rate
         self.verbose = verbose
 
@@ -23,14 +23,14 @@ class MetricTraceLogExp:
         self.valid_log_score = valid_log['score'].values[-valid_len:]
         self.valid_label = valid_log['label'].values[-valid_len:]
         self.valid_time = valid_log['timestamp'].values[-valid_len:]
-        self.valid_score = np.sqrt((self.valid_metric_trace_score ** 2 + self.log_rate * self.valid_log_score ** 2))
+        self.valid_score = self.valid_metric_trace_score + self.log_rate * self.valid_log_score
 
         test_len = min(len(test_metric_trace), len(test_log))
         self.test_metric_trace_score = test_metric_trace['Score_Global'].values[-test_len:]
         self.test_log_score = test_log['score'].values[-test_len:]
         self.test_label = test_log['label'].values[-test_len:]
         self.test_time = test_log['timestamp'].values[-test_len:]
-        self.test_score = np.sqrt((self.test_metric_trace_score ** 2 + self.log_rate * self.test_log_score ** 2))
+        self.test_score = self.test_metric_trace_score + self.log_rate * self.test_log_score
 
         if not os.path.exists('./result/result/'):
             os.makedirs('./result/result/')

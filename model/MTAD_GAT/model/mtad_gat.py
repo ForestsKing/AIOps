@@ -9,7 +9,7 @@ from model.MTAD_GAT.model.reconstruct import ReconstructModel
 
 
 class MTAD_GAT(nn.Module):
-    def __init__(self, n_features=30, gat_h_dim=128, gru_h_dim=128, rec_h_dim=128, for_h_dim=128, seq_len=64,
+    def __init__(self, n_features=30, gat_h_dim=32, gru_h_dim=32, rec_h_dim=32, for_h_dim=32, seq_len=64,
                  dropout=0.5):
         super(MTAD_GAT, self).__init__()
         self.conv = ConvLayer(n_features=n_features)

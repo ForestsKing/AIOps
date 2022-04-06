@@ -18,7 +18,7 @@ from utils.evalmethods import best_threshold
 
 
 class LogExp:
-    def __init__(self, nEvent, n=0.1, epochs=100, batch_size=32, patience=7, lr=0.001, w=128, verbose=True):
+    def __init__(self, nEvent, n=0.1, epochs=100, batch_size=16, patience=7, lr=0.001, w=32, verbose=True):
         self.epochs = epochs
         self.batch_size = batch_size
         self.patience = patience
@@ -144,7 +144,7 @@ class LogExp:
         pred = pred.argsort(axis=1)
         score = []
         for i in range(len(true)):
-            s = np.argwhere(pred[i][::-1] == true[i])[0][0] / (self.nEvent-1)
+            s = np.argwhere(pred[i][::-1] == true[i])[0][0] / (self.nEvent - 1)
             score.append(s ** self.n)
         score = np.array(score)
 
@@ -193,7 +193,7 @@ class LogExp:
         pred = pred.argsort(axis=1)
         score = []
         for i in range(len(true)):
-            s = np.argwhere(pred[i][::-1] == true[i])[0][0] / (self.nEvent-1)
+            s = np.argwhere(pred[i][::-1] == true[i])[0][0] / (self.nEvent - 1)
             score.append(s ** self.n)
         score = np.array(score)
 
