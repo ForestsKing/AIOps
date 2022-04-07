@@ -8,6 +8,6 @@ def plot_loss(forecast, reconstruct, total, path):
     plt.plot(total, label="Total loss")
     plt.title("Losses during training")
     plt.xlabel("Epoch")
-    plt.ylabel("RMSE")
+    plt.ylabel("MSE")
     plt.legend()
     plt.savefig(path, bbox_inches="tight")
