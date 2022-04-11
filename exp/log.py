@@ -128,7 +128,7 @@ class LogExp:
         plot_loss(lossdict["train"], lossdict["valid"], self.imgpath)
 
     def update_threshold(self, df, label):
-        self.model.load_state_dict(torch.load(self.modelpath))
+        self.model.load_state_dict(torch.load(self.modelpath, map_location=self.device))
 
         data = df['EventId'].values
         dataset = MyDataset(data, w=self.w, num_class=self.nEvent)
@@ -176,7 +176,7 @@ class LogExp:
         joblib.dump(threshold, self.thresholdpath)
 
     def detection(self, df, label):
-        self.model.load_state_dict(torch.load(self.modelpath))
+        self.model.load_state_dict(torch.load(self.modelpath, map_location=self.device))
         threshold = joblib.load(self.thresholdpath)
 
         data = df['EventId'].values

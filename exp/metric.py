@@ -198,7 +198,7 @@ class MetricExp:
                   self.validimgpath)
 
     def update_threshold(self, df, label):
-        self.model.load_state_dict(torch.load(self.modelpath))
+        self.model.load_state_dict(torch.load(self.modelpath, map_location=self.device))
 
         data = df[self.feature].values
         dataset = MyDataset(data, w=self.w)
@@ -226,7 +226,7 @@ class MetricExp:
         joblib.dump(threshold, self.thresholdpath)
 
     def detection(self, df, label):
-        self.model.load_state_dict(torch.load(self.modelpath))
+        self.model.load_state_dict(torch.load(self.modelpath, map_location=self.device))
         threshold = joblib.load(self.thresholdpath)
 
         data = df[self.feature].values
