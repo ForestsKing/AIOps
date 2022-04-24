@@ -1,6 +1,5 @@
 This project realizes the anomaly detection and root cause location of multimodal data. The anomaly detection part
-adopts **MTAD-GAT** model (metric, trace) and **DeepLog** model (log), The root cause localization part adopts the **
-Squeeze** model.
+adopts **MTAD-GAT** model (metric, trace) and **DeepLog** model (log), The root cause localization part adopts the **Squeeze** model.
 
 # Experimental setup
 
