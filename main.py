@@ -1,6 +1,5 @@
-import warnings
-
 import pandas as pd
+import warnings
 
 from exp.log import LogExp
 from exp.metric import MetricExp
@@ -23,6 +22,7 @@ feature_metric = ['catalogue_latency', 'cpu_usage_carts', 'cpu_usage_carts_db', 
 feature_trace = ['carts -> carts', 'orders -> orders', 'orders -> payment', 'orders -> user', 'payment -> payment',
                  'root -> carts', 'root -> orders', 'root -> user', 'user -> user']
 
+TRAIN = False
 if __name__ == '__main__':
     set_seed(42)
 
@@ -33,8 +33,9 @@ if __name__ == '__main__':
     label = pd.read_csv('dataset/processed/test/label.csv')
 
     exp = MetricExp(feature_metric)
-    exp.fit(train)
-    exp.update_threshold(test.iloc[:180], label.iloc[:180])
+    if TRAIN:
+        exp.fit(train)
+        exp.update_threshold(test.iloc[:180], label.iloc[:180])
     exp.detection(test.iloc[180:], label.iloc[180:])
     print('====================End====================', '\n\n\n\n\n')
 
@@ -45,8 +46,9 @@ if __name__ == '__main__':
     label = pd.read_csv('dataset/processed/test/label.csv')
 
     exp = TraceExp(feature_trace)
-    exp.fit(train)
-    exp.update_threshold(test.iloc[:180], label.iloc[:180])
+    if TRAIN:
+        exp.fit(train)
+        exp.update_threshold(test.iloc[:180], label.iloc[:180])
     exp.detection(test.iloc[180:], label.iloc[180:])
     print('====================End====================', '\n\n\n\n\n')
 
@@ -57,8 +59,9 @@ if __name__ == '__main__':
     label = pd.read_csv('./dataset/processed/test/label.csv')
     nEvent = len(pd.read_csv('./dataset/processed/tmp/log.log_templates.csv'))
     exp = LogExp(nEvent)
-    exp.fit(train)
-    exp.update_threshold(test[test['timestamp'] < label['timestamp'].values[180]], label.iloc[:180])
+    if TRAIN:
+        exp.fit(train)
+        exp.update_threshold(test[test['timestamp'] < label['timestamp'].values[180]], label.iloc[:180])
     exp.detection(test[test['timestamp'] >= label['timestamp'].values[180]], label.iloc[180:])
     print('====================End====================', '\n\n\n\n\n')
 
@@ -77,15 +80,17 @@ if __name__ == '__main__':
     feature = feature_metric + feature_trace
 
     exp = MetricTraceExp(feature)
-    exp.fit(train)
-    exp.update_threshold(test.iloc[:180], label.iloc[:180])
+    if TRAIN:
+        exp.fit(train)
+        exp.update_threshold(test.iloc[:180], label.iloc[:180])
     exp.detection(test.iloc[180:], label.iloc[180:])
     print('====================End====================', '\n\n\n\n\n')
 
     # metric trace log
     print('====================Metric & Trace & Log====================')
     exp = MetricTraceLogExp()
-    exp.update_threshold()
+    if TRAIN:
+        exp.update_threshold()
     exp.detection()
     print('====================End====================', '\n\n\n\n\n')
 
